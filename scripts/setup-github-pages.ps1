@@ -2,7 +2,7 @@
 # Prerequisites: git, GitHub CLI (gh), logged in via: gh auth login
 
 $ErrorActionPreference = "Stop"
-$RepoName = "dhyan-app"
+$RepoName = "Dhyan"
 Set-Location (Resolve-Path (Join-Path $PSScriptRoot ".."))
 
 if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {

@@ -7,8 +7,8 @@ abstract final class AppLegal {
   static const String contactEmail = 'servecreative.dhyan@gmail.com';
 
   /// Public URL for Google Play Console (Privacy policy field).
-  /// Example: https://yourusername.github.io/dhyan-privacy/
-  static const String privacyPolicyUrl = '';
+  static const String privacyPolicyUrl =
+      'https://servecreative.github.io/Dhyan/';
 
   static const String privacyPolicyLastUpdated = 'May 2026';
 }
