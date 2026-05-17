@@ -1,3 +1,4 @@
+import 'package:dhyan/core/legal/app_legal.dart';
 import 'package:dhyan/data/models/skill_track.dart';
 
 enum AppLocale { en, hi }
@@ -174,7 +175,15 @@ class AppStrings {
       isHindi ? 'UPI ID copy karo' : 'Copy UPI ID';
   String get supportDonateCopied =>
       isHindi ? 'UPI ID copy ho gayi' : 'UPI ID copied';
-  String get supportUpiPlaceholder => 'dhyan.focus@upi';
+  String get supportUpiPlaceholder => AppLegal.supportUpiId;
+  String get breathInhale => isHindi ? 'Saans andar (4)' : 'Breathe in (4)';
+  String get breathHold => isHindi ? 'Roko (7)' : 'Hold (7)';
+  String get breathExhale => isHindi ? 'Saans bahar (8)' : 'Breathe out (8)';
+  String get aboutTitle => isHindi ? 'About Dhyan' : 'About Dhyan';
+  String get aboutVersion => isHindi ? 'Version' : 'Version';
+  String get aboutDeveloper => isHindi ? 'Developer' : 'Developer';
+  String get aboutContact => isHindi ? 'Contact' : 'Contact';
+  String get aboutPackage => isHindi ? 'Package' : 'Package';
   String get supportSkip =>
       isHindi ? 'Abhi nahi, home jao' : 'Not now, go home';
   String get privacyPolicyTitle =>

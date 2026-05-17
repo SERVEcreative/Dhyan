@@ -126,9 +126,18 @@ class ProgressScreen extends ConsumerWidget {
                 Text(s.disclaimer, style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(height: 16),
                 Center(
-                  child: TextButton(
-                    onPressed: () => context.push('/privacy'),
-                    child: Text(s.privacyPolicyLink),
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    children: [
+                      TextButton(
+                        onPressed: () => context.push('/about'),
+                        child: Text(s.aboutTitle),
+                      ),
+                      TextButton(
+                        onPressed: () => context.push('/privacy'),
+                        child: Text(s.privacyPolicyLink),
+                      ),
+                    ],
                   ),
                 ),
               ],

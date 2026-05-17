@@ -6,6 +6,12 @@ abstract final class AppLegal {
   static const String packageName = 'com.servecreative';
   static const String contactEmail = 'professional.rahul.business@gmail.com';
 
+  /// Voluntary support UPI — update with your real UPI ID before wide release.
+  static const String supportUpiId = 'servecreative@upi';
+
+  static const String appVersion = '1.0.0';
+  static const int appBuildNumber = 1;
+
   /// Public URL for Google Play Console (Privacy policy field).
   static const String privacyPolicyUrl =
       'https://servecreative.github.io/Dhyan/';

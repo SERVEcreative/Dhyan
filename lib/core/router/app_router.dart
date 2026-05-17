@@ -17,6 +17,7 @@ import 'package:dhyan/domain/session_type_meta.dart';
 import 'package:dhyan/features/session/session_summary_screen.dart';
 import 'package:dhyan/features/session/session_support_screen.dart';
 import 'package:dhyan/features/legal/privacy_policy_screen.dart';
+import 'package:dhyan/features/settings/about_screen.dart';
 import 'package:dhyan/features/session/warmup_screen.dart';
 import 'package:dhyan/providers/app_providers.dart';
 import 'package:flutter/material.dart';
@@ -91,6 +92,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/privacy',
         builder: (context, state) => const PrivacyPolicyScreen(),
+      ),
+      GoRoute(
+        path: '/about',
+        builder: (context, state) => const AboutScreen(),
       ),
       GoRoute(
         path: '/urge',

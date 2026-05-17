@@ -96,15 +96,30 @@ class HomeScreen extends ConsumerWidget {
                     child: Text(s.reelsLogCta),
                   ),
                 ),
-                Center(
-                  child: TextButton(
-                    onPressed: () => context.push('/privacy'),
-                    style: TextButton.styleFrom(
-                      foregroundColor: AppTheme.textMuted,
-                      textStyle: const TextStyle(fontSize: 13),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () => context.push('/about'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: AppTheme.textMuted,
+                        textStyle: const TextStyle(fontSize: 13),
+                      ),
+                      child: Text(s.aboutTitle),
                     ),
-                    child: Text(s.privacyPolicyLink),
-                  ),
+                    Text(
+                      '·',
+                      style: TextStyle(color: AppTheme.textMuted.withValues(alpha: 0.6)),
+                    ),
+                    TextButton(
+                      onPressed: () => context.push('/privacy'),
+                      style: TextButton.styleFrom(
+                        foregroundColor: AppTheme.textMuted,
+                        textStyle: const TextStyle(fontSize: 13),
+                      ),
+                      child: Text(s.privacyPolicyLink),
+                    ),
+                  ],
                 ),
               ],
             ),
