@@ -181,9 +181,11 @@ class AppStrings {
   String get breathExhale => isHindi ? 'Saans bahar (8)' : 'Breathe out (8)';
   String get aboutTitle => isHindi ? 'About Dhyan' : 'About Dhyan';
   String get aboutVersion => isHindi ? 'Version' : 'Version';
-  String get aboutDeveloper => isHindi ? 'Developer' : 'Developer';
-  String get aboutContact => isHindi ? 'Contact' : 'Contact';
-  String get aboutPackage => isHindi ? 'Package' : 'Package';
+  String get aboutCompanyName =>
+      isHindi ? 'Company naam' : 'Company name';
+  String get aboutMailBox => isHindi ? 'Mail box' : 'Mail box';
+  String get aboutMailBoxTap =>
+      isHindi ? 'Email kholo' : 'Open email';
   String get supportSkip =>
       isHindi ? 'Abhi nahi, home jao' : 'Not now, go home';
   String get privacyPolicyTitle =>

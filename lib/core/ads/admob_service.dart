@@ -21,6 +21,16 @@ abstract final class AdMobService {
     return AdMobConfig.rewardedAdUnitAndroid;
   }
 
+  static String get bannerAdUnitId {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      return AdMobConfig.bannerAdUnitIos;
+    }
+    return AdMobConfig.bannerAdUnitAndroid;
+  }
+
+  static bool get isBannerConfigured =>
+      isSupported && bannerAdUnitId.isNotEmpty;
+
   static Future<void> initialize() async {
     if (!isSupported || _initialized) return;
     await MobileAds.instance.initialize();
@@ -47,6 +57,9 @@ abstract final class AdMobService {
               if (!completer.isCompleted) completer.complete(true);
             },
             onAdFailedToShowFullScreenContent: (ad, error) {
+              debugPrint(
+                'AdMob rewarded show failed [${error.code}]: ${error.message}',
+              );
               ad.dispose();
               if (!completer.isCompleted) completer.complete(false);
             },
@@ -56,6 +69,9 @@ abstract final class AdMobService {
           );
         },
         onAdFailedToLoad: (error) {
+          debugPrint(
+            'AdMob rewarded load failed [${error.code}]: ${error.message}',
+          );
           if (!completer.isCompleted) completer.complete(false);
         },
       ),

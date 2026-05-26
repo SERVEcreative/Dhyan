@@ -1,4 +1,6 @@
+import 'package:dhyan/core/ads/admob_service.dart';
 import 'package:dhyan/core/theme/app_theme.dart';
+import 'package:dhyan/core/widgets/admob_banner_bar.dart';
 import 'package:dhyan/core/widgets/exit_focus_dialog.dart';
 import 'package:dhyan/features/activities/activities_screen.dart';
 import 'package:dhyan/features/home/home_screen.dart';
@@ -50,29 +52,35 @@ class _MainShellScreenState extends ConsumerState<MainShellScreen> {
           ProgressScreen(),
         ],
       ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _index,
-        onDestinationSelected: (i) => setState(() => _index = i),
-        height: 64,
-        backgroundColor: AppTheme.deepNavy,
-        surfaceTintColor: Colors.transparent,
-        indicatorColor: AppTheme.surfaceElevated,
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
-        destinations: [
-          NavigationDestination(
-            icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home),
-            label: s.navHome,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.apps_outlined),
-            selectedIcon: const Icon(Icons.apps),
-            label: s.allActivities,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.insights_outlined),
-            selectedIcon: const Icon(Icons.insights),
-            label: s.progress,
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (AdMobService.isSupported) const AdMobBannerBar(),
+          NavigationBar(
+            selectedIndex: _index,
+            onDestinationSelected: (i) => setState(() => _index = i),
+            height: 64,
+            backgroundColor: AppTheme.deepNavy,
+            surfaceTintColor: Colors.transparent,
+            indicatorColor: AppTheme.surfaceElevated,
+            labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+            destinations: [
+              NavigationDestination(
+                icon: const Icon(Icons.home_outlined),
+                selectedIcon: const Icon(Icons.home),
+                label: s.navHome,
+              ),
+              NavigationDestination(
+                icon: const Icon(Icons.apps_outlined),
+                selectedIcon: const Icon(Icons.apps),
+                label: s.allActivities,
+              ),
+              NavigationDestination(
+                icon: const Icon(Icons.insights_outlined),
+                selectedIcon: const Icon(Icons.insights),
+                label: s.progress,
+              ),
+            ],
           ),
         ],
       ),

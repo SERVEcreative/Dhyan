@@ -1,5 +1,27 @@
 # Creates android/upload-keystore.jks and android/key.properties for Play Store release.
 $ErrorActionPreference = "Stop"
+
+function Get-KeytoolPath {
+    $candidates = @(
+        $(if ($env:JAVA_HOME) { Join-Path $env:JAVA_HOME "bin\keytool.exe" }),
+        "C:\Program Files\Android\Android Studio\jbr\bin\keytool.exe",
+        "$env:LOCALAPPDATA\Programs\Android\Android Studio\jbr\bin\keytool.exe"
+    ) | Where-Object { $_ -and (Test-Path $_) }
+
+    if ($candidates.Count -gt 0) { return $candidates[0] }
+
+    $fromPath = Get-Command keytool -ErrorAction SilentlyContinue
+    if ($fromPath) { return $fromPath.Source }
+
+    throw @"
+keytool not found. Install Android Studio (JDK bundled) or add Java bin to PATH.
+Try: `"C:\Program Files\Android\Android Studio\jbr\bin`" added to your PATH.
+"@
+}
+
+$keytool = Get-KeytoolPath
+Write-Host "Using keytool: $keytool"
+
 $androidDir = Join-Path $PSScriptRoot "..\android" | Resolve-Path
 $keystore = Join-Path $androidDir "upload-keystore.jks"
 $keyProps = Join-Path $androidDir "key.properties"
@@ -13,7 +35,7 @@ $storePass = Read-Host "Enter keystore password (save this safely!)"
 $keyPass = Read-Host "Enter key password (often same as keystore)"
 $dname = "CN=Serve Creative, OU=Mobile, O=Serve Creative, L=India, ST=India, C=IN"
 
-keytool -genkeypair -v `
+& $keytool -genkeypair -v `
     -keystore $keystore `
     -storetype JKS `
     -alias upload `
@@ -33,5 +55,5 @@ storeFile=../upload-keystore.jks
 
 Write-Host ""
 Write-Host "Created: $keystore"
-Write-Host "Created: $keyProps (gitignored — back up passwords!)"
+Write-Host "Created: $keyProps (gitignored - back up passwords!)"
 Write-Host "Build release AAB: flutter build appbundle --release"

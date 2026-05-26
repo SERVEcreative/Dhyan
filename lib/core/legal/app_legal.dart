@@ -9,8 +9,8 @@ abstract final class AppLegal {
   /// Voluntary support UPI — update with your real UPI ID before wide release.
   static const String supportUpiId = 'servecreative@upi';
 
-  static const String appVersion = '1.0.0';
-  static const int appBuildNumber = 1;
+  static const String appVersion = '1.0.1';
+  static const int appBuildNumber = 2;
 
   /// Public URL for Google Play Console (Privacy policy field).
   static const String privacyPolicyUrl =

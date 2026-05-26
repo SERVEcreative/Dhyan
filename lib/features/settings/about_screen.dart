@@ -55,17 +55,24 @@ class AboutScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 28),
           _AboutTile(
-            label: s.aboutDeveloper,
+            label: s.aboutCompanyName,
             value: AppLegal.developerName,
           ),
-          _AboutTile(
-            label: s.aboutPackage,
-            value: AppLegal.packageName,
-          ),
-          _AboutTile(
-            label: s.aboutContact,
-            value: AppLegal.contactEmail,
-            onTap: () => _openUrl('mailto:${AppLegal.contactEmail}'),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            title: Text(
+              s.aboutMailBox,
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+            trailing: IconButton.filled(
+              onPressed: () => _openUrl('mailto:${AppLegal.contactEmail}'),
+              icon: const Icon(Icons.mail_outline),
+              tooltip: s.aboutMailBoxTap,
+              style: IconButton.styleFrom(
+                backgroundColor: AppTheme.surfaceElevated,
+                foregroundColor: AppTheme.textPrimary,
+              ),
+            ),
           ),
           ListTile(
             contentPadding: EdgeInsets.zero,
@@ -90,12 +97,10 @@ class _AboutTile extends StatelessWidget {
   const _AboutTile({
     required this.label,
     required this.value,
-    this.onTap,
   });
 
   final String label;
   final String value;
-  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +108,6 @@ class _AboutTile extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       title: Text(label, style: Theme.of(context).textTheme.labelMedium),
       subtitle: Text(value),
-      onTap: onTap,
     );
   }
 }
